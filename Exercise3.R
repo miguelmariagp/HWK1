@@ -11,6 +11,7 @@ legend('top', ncol=3, lty=1,col=c('blue','red','green'), legend=c('Obama   ', 'R
 
 #Trends
 summary(lm(rate_sb_pos~ID*as.factor(speaker),db))
+#Nothing clear
 
 library(data.table)
 tolagdt<-data.table(db)
@@ -18,5 +19,6 @@ tolagdt<-data.table(db)
 tolagdt[, lag.value:=c(NA, speaker[-.N]), by=ID]
 db$speaker_lag<-tolagdt$lag.value
 
+#Neither here
 summary(lm(rate_sb_pos~speaker*speaker_lag,db))
 
